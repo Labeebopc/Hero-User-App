@@ -1,46 +1,40 @@
 import React from "react";
-import { useStyles } from './cardStyles'
+import { Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Box } from "@mui/material";
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import SendIcon from '@mui/icons-material/Send';
+// import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const Card = ({ post }) => {
-    const classes = useStyles()
+const CustomCard = ({ post }) => {
     return (
-        <>
-            <section className="card">
-                <section className="card-header">
-                    <div>
-                        {/* <div className="card-header-name">{post.author}</div> */}
-                        <div className="card-header-place">Dubai</div>
-                    </div>
-                    <span>
-                        <i className="fa-solid fa-ellipsis"></i>
-                    </span>
-                </section>
+        <Box display="flex" justifyContent="center" alignItems="center" height="100vh"> 
+            <Card elevation={3} sx={{ width: 300, borderRadius: 2 }}>
+                <CardHeader
+                    title={post.author || "Unknown Author"}
+                    subheader={post.date}
+                    action={
+                        <IconButton>
+                        </IconButton>
+                    }
+                />
+                <CardMedia
+                    component="img"
+                    height="140"
+                    image={post.postImage}
+                    alt="post image"
+                />
+                <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                        {post.description}
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Typography variant="body2" color="text.secondary">
+                        {post.likes} likes
+                    </Typography>
+                </CardActions>
+            </Card>
+        </Box>
+    );
+};
 
-                <section className="card-image">
-                    <img src={post.postImage} alt="place" />
-                </section>
-
-                <section className="card-actions">
-                    <span>
-                        <i className="fa-solid fa-heart"></i>
-                    </span>
-                    <span>
-                        <i className="fa-solid fa-paper-plane"></i>
-                    </span>
-                    <span>{post.date}</span>
-                </section>
-
-                <section className="likes">
-                    {post.likes} likes
-                </section>
-
-                <section className="description">
-                    {post.description}
-                </section>
-
-            </section>
-        </>
-    )
-}
-
-export default Card;
+export default CustomCard;

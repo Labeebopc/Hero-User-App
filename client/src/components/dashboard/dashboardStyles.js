@@ -1,8 +1,14 @@
 import { makeStyles } from '@mui/styles'
 
 export const useStyles = makeStyles({
-    dashboardContainer: {
+    dashboard: {
         // border:"1px solid red",
-        height:"100%",
+        marginTop: "2rem",
+    },
+    addImageBtn: {
+        marginTop: "2rem"
+    },
+    cardContainer: {
+        marginTop: "2rem"
     }
 });
