@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FileBase64 from 'react-file-base64';
+import FileBase64 from 'react-file-base64'
+
 import { TextField, Button, Typography, Grid, Paper } from '@mui/material';
 import './form.css';
 import { Header } from "../header/Header";
