@@ -10,7 +10,7 @@ const router = express.Router()
 router.post("/add_post", authUser, createPost)
 
 //GET_ALL_POST || GET
-router.get("/get_all_posts", authUser, getPost)
+router.get("/get_all_posts/:id", getPost)
 
 
 module.exports = router;
