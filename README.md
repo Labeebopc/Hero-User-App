@@ -51,8 +51,10 @@ npm install
 
 **Running the Project**
 
+Make sure you are running frontend only
+
 ```bash
-npm run dev
+npm start
 ```
 
 and many more,
