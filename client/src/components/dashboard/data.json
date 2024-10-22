@@ -1,0 +1,19 @@
+
+
+{
+    "user": [
+      {
+        "likes": 64,
+        "description": "Kick start your career",
+        "PostImage": "images/",
+        "date": "12/02/2022"
+      },
+      {
+        "likes": 30,
+        "description": "Sample Description for Post",
+        "PostImage": "images/bridge.jpg",
+        "date": "10/06/2022"
+      }
+    ]
+  }
+  
