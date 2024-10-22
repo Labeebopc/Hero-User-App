@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const dotenv = require("dotenv").config()
 const session = require('express-session')
+const helmet = require('helmet')
 
 const { readdirSync } = require("fs")
 const database = require("./config/database.js")
@@ -17,6 +18,16 @@ app.use(
     })
 );
 app.use(cors())
+
+// Use helmet to set security headers
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            fontSrc: ["'self'", "https://fonts.googleapis.com"],
+        },
+    },
+}));
 
 //routes
 readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)))

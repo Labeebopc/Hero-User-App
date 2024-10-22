@@ -30,7 +30,7 @@ A user app where a user can login, signup, create post, share post etc.
     
 👉 **User Management:** Streamlined management of user accounts.
 
-👉 **Hosted:** http://207.154.207.197:8080 .
+👉 **Hosted:** http://207.154.207.197:3000.
 
 **Cloning the Repository**
 
