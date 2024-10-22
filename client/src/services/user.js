@@ -16,9 +16,9 @@ export const getUserData = async (token) => {
   }
 };
 
-export const getAllPosts = async (token) => {
+export const getAllPosts = async (token, id) => {
     try {
-      const { data } = await axios.get(`${host}/get_all_posts`, {
+      const { data } = await axios.get(`${host}/get_all_posts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,14 +29,17 @@ export const getAllPosts = async (token) => {
     }
   };
   
-  export const createNewPost = async (token, datas) => {
-    console.log(token)
+  export const createNewPost = async (token, datas, id) => {
+    
+    const postData = { ...datas, userId: id }
     try {
-      const { data } = await axios.post(`${host}/add_post`, datas, {
+      const { data } = await axios.post(`${host}/add_post`, postData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(data)
+      
       return data;
     } catch (error) {
       return error.response.data.message;

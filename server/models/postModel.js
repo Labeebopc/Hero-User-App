@@ -7,8 +7,8 @@ const PostSchema = new Schema({
 
     postImage: { type: String },
     date: { type: String },
-    likes: Number,
-
+    views: Number,
+    tags: [String],
     user: { type: Schema.Types.ObjectId, ref: 'Users', required: true }
 
 })

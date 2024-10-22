@@ -12,15 +12,14 @@ const Form = () => {
     const [form, setForm] = useState({ postImage: "" });
     const navigate = useNavigate();
     const isAllInputsValied = form.postImage.length;
-    const [isValid, setIsValied] = useState(false);
+    const [isValid, setIsValied] = useState(true);
     const { user } = useSelector(state => state.user)
 
 
     const handlePost = async (e) => {
         e.preventDefault();
-        console.log(form.postImage.length);
 
-        if (form.postImage.length == 0) {
+        if (form?.postImage?.length == 0) {
             setIsValied(false)
             return
         } else {
@@ -28,8 +27,7 @@ const Form = () => {
         }
 
         try {
-            console.log("first")
-            await createNewPost(user.token, form);
+            await createNewPost(user?.token, form, user?.existingUser?._id);
             navigate("/dashboard");
         } catch (error) {
             console.error("Error creating post:", error);
