@@ -22,7 +22,6 @@ export const Dashboard = () => {
         console.log(res.post, "post")
         setPosts(res?.post)
     }
-
     const handlePost = async () => {
         navigate('/post')
     }
