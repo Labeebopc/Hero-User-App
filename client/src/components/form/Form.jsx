@@ -5,14 +5,18 @@ import FileBase64 from 'react-file-base64';
 import { TextField, Button, Typography, Grid, Paper } from '@mui/material';
 import './form.css';
 import { Header } from "../header/Header";
+import { useSelector, useDispatch } from 'react-redux';
+import { createNewPost } from "../../services/user";
 
 const Form = () => {
     const [form, setForm] = useState({ postImage: "", description: "" });
     const navigate = useNavigate();
     const isAllInputsValied = form.postImage.length && form.description.length;
     const [isValid, setIsValied] = useState(false);
+    const { user } = useSelector(state => state.user)
 
-    const handlePost = (e) => {
+
+    const handlePost = async (e) => {
         e.preventDefault();
 
         if (!isAllInputsValied) {
@@ -24,10 +28,7 @@ const Form = () => {
 
         console.log(form);
 
-        axios.post("http://localhost:5000/api/v1/posts/addpost", {
-            postImage: form.postImage.base64,
-            description: form.description
-        })
+        await createNewPost(user, form)
             .then(() => navigate("/dashboard"));
     };
 
