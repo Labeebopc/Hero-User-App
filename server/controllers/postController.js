@@ -6,15 +6,16 @@ const { PostSchema } = require("../models/postModel.js")
 const Post = mongoose.model('Post', PostSchema)
 
 const createPost = async (req, res) => {
+    console.log(req.body)
     const userId = req.user._id
-    const { postImage, description } = req.body;
+    const { postImage } = req.body;
 
     let date = new Date().toLocaleDateString()
     let likes = Math.floor(Math.random() * 100)
 
     try {
 
-        const post = await Post.create({ postImage, description, date, likes, user: userId })
+        const post = await Post.create({ postImage, date, likes, user: userId })
         console.log(post);
         res.status(201).json({ success: true, post, message: "Post Created Successfuly" })
 

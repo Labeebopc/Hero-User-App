@@ -9,27 +9,32 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createNewPost } from "../../services/user";
 
 const Form = () => {
-    const [form, setForm] = useState({ postImage: "", description: "" });
+    const [form, setForm] = useState({ postImage: "" });
     const navigate = useNavigate();
-    const isAllInputsValied = form.postImage.length && form.description.length;
+    const isAllInputsValied = form.postImage.length;
     const [isValid, setIsValied] = useState(false);
     const { user } = useSelector(state => state.user)
 
 
     const handlePost = async (e) => {
         e.preventDefault();
+        console.log(form.postImage.length);
 
-        if (!isAllInputsValied) {
-            setIsValied(true);
-            return; // Early return to avoid making the request if fields are invalid
+        if (form.postImage.length == 0) {
+            setIsValied(false)
+            return
         } else {
-            setIsValied(false);
+            setIsValied(true)
         }
 
-        console.log(form);
+        try {
+            console.log("first")
+            await createNewPost(user.token, form);
+            navigate("/dashboard");
+        } catch (error) {
+            console.error("Error creating post:", error);
 
-        await createNewPost(user, form)
-            .then(() => navigate("/dashboard"));
+        }
     };
 
     return (
@@ -48,18 +53,7 @@ const Form = () => {
                             onDone={(base64) => setForm({ ...form, postImage: base64 })}
                         />
                     </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            variant="outlined"
-                            label="Description"
-                            name="description"
-                            onChange={(e) => setForm({ ...form, description: e.target.value })}
-                            value={form.description}
-                            error={isValid}
-                            helperText={isValid ? "All fields are mandatory" : ""}
-                        />
-                    </Grid>
+
                     <Grid item xs={12}>
                         <Button
                             variant="contained"
@@ -70,6 +64,11 @@ const Form = () => {
                         >
                             Post
                         </Button>
+
+                        {
+                            !isValid &&
+                            <div style={{ color: "red", marginTop: "10px" }}>All fields are mandatory</div>
+                        }
                     </Grid>
                 </Grid>
             </form>

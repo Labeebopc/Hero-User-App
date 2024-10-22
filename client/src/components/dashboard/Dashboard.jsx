@@ -22,8 +22,8 @@ export const Dashboard = () => {
 
     const allPosts = async () => {
         let res = await getAllPosts(user.token)
-        // console.log(res.allUsers, "users")
-        // setPosts(res.allUsers)
+        // console.log(res.post, "post")
+        setPosts(res.post)
     }
 
     const handlePost = async () => {
