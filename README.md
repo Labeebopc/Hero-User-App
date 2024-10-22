@@ -32,6 +32,29 @@ A user app where a user can login, signup, create post, share post etc.
 
 👉 **Hosted:** http://207.154.207.197:8080 .
 
+**Cloning the Repository**
+
+```bash
+git clone https://github.com/Labeebopc/Hero-User-App.git
+cd Hero-User-App
+```
+
+**Installation**
+
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+
+**Set Up Environment Variables**
+
+**Running the Project**
+
+```bash
+npm run dev
+```
+
 and many more,
 #
 ![Screenshot 2024-10-22 173255](https://github.com/user-attachments/assets/3b04a50d-c0b9-497b-b0e6-a6bf065b5135)
